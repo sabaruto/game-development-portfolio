@@ -1,0 +1,24 @@
+.home {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+    flex: 1 0 0;
+    align-self: stretch;
+}
+
+.home button {
+    margin: 30px;
+}
+
+.content {
+    display: flex;
+    padding: 0px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex: 1 0 0;
+    align-self: stretch;
+}

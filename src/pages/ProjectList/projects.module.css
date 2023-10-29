@@ -1,0 +1,32 @@
+.projects {
+    display: flex;
+    align-self: stretch;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+}
+
+.content {
+    display: flex;
+    align-self: stretch;
+    flex-direction: column;
+    gap: 5%;
+    margin: 5% 0%;
+    flex-grow: 1;
+}
+
+.cards {
+    display: flex;
+    align-self: stretch;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0% 10%;
+    gap: 50px;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+}

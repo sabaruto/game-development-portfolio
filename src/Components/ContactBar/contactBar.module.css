@@ -1,0 +1,9 @@
+.contactBar {
+    display: flex;
+    width: 100%;
+    padding: 0px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-top: 1px solid var(--accent, #7E8377);
+}

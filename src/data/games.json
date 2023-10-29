@@ -1,0 +1,120 @@
+[
+    {
+        "title": "Genetic Algorithm",
+        "description": "A demonstration of the genetic algorithm through evolving creatures learning to run. The creatures are given 30 seconds to travel as far right as possible.",
+        "video": "geneticAlgorithm.mp4",
+        "image": "geneticRunners.png",
+        "url": "/Project/GeneticAlgorithm",
+        "source": "https://github.com/sabaruto/Genetic-Runners",
+        "build": "https://github.com/sabaruto/Genetic-Runners/blob/master/Build.zip",
+        "nuggets": [
+            "Unity Game Engine",
+            "Solo Project",
+            "Designer",
+            "Programmer"
+        ],
+        "page": {
+            "description": [
+                "A demonstration of the genetic algorithm through evolving creatures learning to run. The simulation creates 50 agents, and given 30 seconds to travel as far right as possible. After time is complete, we score each agent on the positive distance from the starting point.",
+                "This is then repeated with a new group of agents, slightly altered from the inital generation, either from directly copying the structure or mutating certain elements."
+            ],
+            "extraInfo": [
+                {
+                    "title": "Agent Construction",
+                    "image": "agentConstruction.png",
+                    "description": [
+                        "Each agent has a body and brain. The body is how the agent interacts with the environment and the brain tells the agent what to do given it's obervation.",
+                        "Each agent's body is made of bones, nodes and muscles. The nodes are dark circles that have a collision with only the ground. Bones are connectors of nodes, having no collision with other bones or nodes. Muscles connect different muscles apart and are able to contract or expand depending on the brain's input The brain is a neural network, with inputs being the position of each bone and muscle and the output being the contraction power of each muscle. The node, muscle and bone positions and connections can all be mutated between generations but the main improvement from each agent comes from the mutations of the agent's brain."
+                    ]
+                },
+                {
+                    "title": "Genetic Algorithm",
+                    "image": "geneticAlgorithm.png",
+                    "description": ["The genetic algorithm is the process we use to find the best brain parameters for running. At the end of every thirty seconds, we evaluate the fitness of every agent by seeing how far the agent has moved from the starting line, we give negative values for agents who ran to the left. We then randomly pick half the agents to keep alive, with a preference to the faster ones. To fill the other fifty percent, we complete two different methods to introduce randomness: mutations and genetic crossover.", "The mutation step would duplicate a living agent then randomly change some of it's brain parameters slightly. The mutation rate is pretty low, about zero point one percent, but allows potentially useful parameters to arise and improve the agent's performance.", "The genetic crossover technique would take two living agents and create a new agent from their DNA. The brain parameters of the new agent are chosen from either parent at random.", "Once we have the full number of agents, we run the simulation again."]
+                },
+                {
+                    "title": "Brain Construction",
+                    "image": "brain.png",
+                    "description": ["The brain of each agent is constructed with a neural network. At each game tick, it takes the position of the agent's bones and muscles as input then sets the strength for each muscle.", "The nerual network has one hidden layer of 60 nodes, using sigmoid for it's activation function. The output layer uses a tanh activation funciton allowing the brain to contract or relax muscles with equal strength."]
+                }
+            ]
+        }
+    },
+    {
+        "title": "Fimbul Winter",
+        "description": "An in-development Adventure puzzle game created on the Unity Game Engine, leveraging the pixel art-style to give a simplistic and nostalgic game play experience.",
+        "video": "fimbulWinter.mp4",
+        "image": "fimbulWinter.png",
+        "url": "/Project/FimbulWinter",
+        "source": "",
+        "build": "",
+        "nuggets": [
+            "Unity Game Engine",
+            "In Development",
+            "Team Project",
+            "Artist",
+            "Designer",
+            "Programmer"
+        ],
+        "page": {
+            "description": [
+                "Fimbul Winter is a top-down game set in an mythical nordic country, where you fight and survive the eternal frost and their inhabitants. This was created as a solo Action Adventure game, lifting ideas from games like 'League of Legends' and 'Path of Exile' with tab-targatted autoattacks and area based abilities."
+            ],
+            "extraInfo": [
+                {
+                    "title": "Statuses",
+                    "image": "statuses.png",
+                    "description": ["Players and enemies can be effected by a variety of statuses, ranging from attack speed buffs to silences and stuns. These can be applied through abilities, attacks or projectiles, potentially changing the playstyle of the character significantly.",
+                    "A good example of this is the wolf's stalking status. When a wolf is initialised, they instantly go into stalk status, halving their movement and, when the player is within visible distance, start moving towards the player. If the wolf gets within a certain distance, they stop the stalk status and adds the 'chase' status, increasing their speed and attack speed significantly. If the player is able to damage the wolf before it gets in range however, the stalk status ends and the wolves are much simpler to kill without their 'chase' status activated.",
+                    "All characters have a list of statuses which is checked every frame, firstly checking if it should be alive and if so add their effects. Stat changes like movement and attack speed are done multiplicatively, allowing for multiple statuses to stack or cancel eachother out. Other effects are done in an effect function, "
+                   ]
+                },
+                {
+                    "title": "Movement",
+                    "image": "movement.png",
+                    "description": ["There is a global grid initialised at the start of all levels which is used for all movement, declaring what is free and blocked terrain. All grid points overlapping with an obstacle are declared 'block' points and wouldn't allow any paths through.",
+                    "When any character wants to move to a spot, it calls the global grid for a route. If there is no obstacle between the player and their destination, the character is given just the destination position. If there is a more complicated route, I use the A* algorithm to find if there is a possible route and if so, the fastest path. Once it's found, we return all corner points, returning only points where the character needs to rotate."]
+                }
+            ]
+        }
+    },
+    {
+        "title": "Hike Explorer",
+        "description": "A Great Uni Hackathon game where you climb a mountain with extendable limbs.",
+        "video": "hikeExplorer.mp4",
+        "image": "hikeExplorer.png",
+        "url": "/Project/HikeExplorer",
+        "source": "https://github.com/sabaruto/HikeExplorer",
+        "build": "https://github.com/sabaruto/HikeExplorer/blob/master/Hike%20Explorer.zip",
+        "nuggets": [
+            "Unity Game Engine",
+            "Game Jam",
+            "Artist",
+            "Puzzle",
+            "Designer",
+            "Programmer"
+        ],
+        "page": {
+            "description": [
+                "This is a small game jam project where you climb a mountain, using a novel movement system. This was made as a part of the Great Uni Hackathon and won the best project for it's category of 'Travel Game'. The objective of this game is to get your main torso over the green line under the given time limit."
+            ],
+            "extraInfo": [
+                {
+                    "title": "Mechanics",
+                    "image": "Player.png",
+                    "description": [
+                        "Your player character is constructed of your torso and four limbs. You are able to move your limbs onto one of the divets in the wall, or left hanging, indicated by the limb going red. If none of your limbs are connected to a wall divet, you fall off the wall, losing the game.",
+                        "Your body cannot be directly moved but will automatically move to the average position of your limbs."
+                    ]
+                },
+                {
+                    "title": "Limb Stretching",
+                    "image": "Limbs.png",
+                    "description": [
+                        "The limbs of your character has a max distance from your torso whilst moving but once on a divet, won't move no matter the distance. This allows you to essentially stretch limbs on holds to extreme distances, making some fun screenshots and improbable climbing sequences."
+                    ]
+                }
+            ]
+        }
+    }
+]

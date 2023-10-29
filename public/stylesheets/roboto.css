@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('../fonts/RobotoSlab-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Serif';
+    src: url('../fonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto Serif Italic';
+    src: url('../fonts/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf');
+}
