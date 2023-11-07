@@ -8,7 +8,6 @@ import AboutMe from './pages/AboutMe';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ProjectList from './pages/ProjectList';
 import Projects from './pages/Projects/Projects';
-import Links from './Components/Card/Links';
 
 const router = createBrowserRouter([
     {
