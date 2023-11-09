@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import ProjectList from "../ProjectList";
 
 function ContactInfo() {
