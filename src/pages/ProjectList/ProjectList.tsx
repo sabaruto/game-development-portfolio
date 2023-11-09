@@ -6,11 +6,19 @@ import styles from './projects.module.css'
 import urls from '../../data/urls.json';
 import RowCards from '../../Components/Card/RowCards';
 import ContactBar from '../../Components/ContactBar';
+import SetOrientationStyle from '../../Common/Orientation/Orientation';
+import { useContext } from 'react';
+import { OrientationContext } from '../../App/App';
 
 const games: Game[] = GameData;
 
 
 function ProjectList() {
+    const projectsStyle = SetOrientationStyle(
+        styles.projects,
+        styles.projects,
+        styles.projectsSmall,
+    )
     let navigate = useNavigate();
 
     function handleNextPageClick(event: any) {
@@ -19,7 +27,7 @@ function ProjectList() {
     }
 
     return (
-        <div className={styles.projects}>
+        <div className={projectsStyle[useContext(OrientationContext)]}>
             <div className={styles.content}>
                 <div className={styles.button}>
                     <NavButton imageName='ai-arrow-up' onClick={handleNextPageClick} />

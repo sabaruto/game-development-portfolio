@@ -1,15 +1,28 @@
-.navbar, .small {
+.navbar,
+.small,
+.extraSmall {
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
-.small {
+.small,
+.extraSmall {
     flex-direction: column;
     padding: 2% 0%;
-    height: 140px;
     width: 100%;
+}
+
+.small {
+    height: 140px;
+}
+
+.extraSmall {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1000;
 }
 
 .navbar {
@@ -18,17 +31,21 @@
     width: 96%;
 }
 
-.small h1 {
+.navbar h1,
+.small h1,
+.extraSmall h1 {
+    font-style: italic;
+}
+
+.small h1,
+.extraSmall h1 {
     margin-top: 0%;
     margin-bottom: 2%;
 }
 
-.navbar h1, .small h1 {
-    font-family: Roboto Serif;
-    font-size: 47.37px;
-    font-style: italic;
-    font-weight: 700;
-    line-height: normal;
+.extraSmall h1 {
+    text-align: center;
+    font-size: var(--h3);
 }
 
 .buttons {
@@ -36,4 +53,9 @@
     justify-content: flex-end;
     align-items: center;
     gap: 10px;
+}
+
+.extraSmall .buttons {
+    justify-content: space-evenly;
+    width: 100%;
 }

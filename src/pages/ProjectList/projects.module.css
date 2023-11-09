@@ -1,8 +1,12 @@
-.projects {
+.projects,
+.projectsSmall {
     display: flex;
     align-self: stretch;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.projects {
     align-items: center;
     flex: 1;
 }
@@ -11,9 +15,12 @@
     display: flex;
     align-self: stretch;
     flex-direction: column;
-    gap: 5%;
-    margin: 5% 0%;
     flex-grow: 1;
+    justify-content: space-evenly;
+}
+
+.projectsSmall .content {
+    margin-bottom: 30px;
 }
 
 .cards {
@@ -24,6 +31,11 @@
     justify-content: center;
     margin: 0% 10%;
     gap: 50px;
+}
+
+.projectsSmall .cards {
+    margin: 0px 15px;
+    gap: 15px;
 }
 
 .button {

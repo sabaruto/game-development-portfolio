@@ -5,12 +5,18 @@ import Title from '../../types/Info/Title';
 import styles from './projects.module.css';
 import Games from '../../data/games.json';
 import Links from '../../Components/Card/Links';
-
-// TODO Create a new type of block for link use
+import SetOrientationStyle from '../../Common/Orientation/Orientation';
+import { useContext } from 'react';
+import { OrientationContext } from '../../App/App';
 
 function Projects(props: { title: string}) {
 
     const currentGame = Games.find((game) => game.title === props.title)
+    const baseStyles = SetOrientationStyle(
+        styles.base,
+        styles.base,
+        styles.baseSmall,
+    )
 
     var sourceLink = ""
     var buildLink = ""
@@ -36,7 +42,7 @@ function Projects(props: { title: string}) {
     }
 
     return (
-        <div className={styles.base}>
+        <div className={baseStyles[useContext(OrientationContext)]}>
             <TitleCard {...titleBlock} />
             {infoBlocks.map((infoBlock) => (
                 <Passport {...infoBlock} key={infoBlock.title}/>

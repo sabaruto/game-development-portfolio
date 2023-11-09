@@ -8,6 +8,7 @@ import AboutMe from './pages/AboutMe';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ProjectList from './pages/ProjectList';
 import Projects from './pages/Projects/Projects';
+import ContactInfo from './pages/ContactInfo';
 
 const router = createBrowserRouter([
     {
@@ -24,23 +25,23 @@ const router = createBrowserRouter([
             },
             {
                 path: "ProjectList",
-                element: <ProjectList />,
+                element: <ProjectList/>,
             },
             {
-                path: "ProjectList",
-                element: <ProjectList />
+                path: "ContactInfo",
+                element: <ContactInfo />,
             },
             {
                 path: "Project/GeneticAlgorithm",
-                element: <Projects title="Genetic Algorithm"/>
+                element: <Projects title="Genetic Algorithm" />
             },
             {
                 path: "Project/HikeExplorer",
-                element: <Projects title="Hike Explorer"/>
+                element: <Projects title="Hike Explorer" />
             },
             {
                 path: "Project/FimbulWinter",
-                element: <Projects title="Fimbul Winter"/>
+                element: <Projects title="Fimbul Winter" />
             }
         ]
     }

@@ -1,9 +1,19 @@
-.contactBar {
+.contactBar,
+.contactBarSmall {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-top: 1px solid var(--accent, #7E8377);
+}
+
+.contactBar {
     width: 100%;
     padding: 0px 20px;
-    justify-content: center;
     align-items: center;
     gap: 30px;
-    border-top: 1px solid var(--accent, #7E8377);
+}
+
+.contactBarSmall {
+    gap: 2px 15px;
+    padding-top: 5px;
 }

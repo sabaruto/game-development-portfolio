@@ -2,14 +2,16 @@ span {
     width: 40px;
     height: 40px;
     border-radius: 40px;
-    font-size: 30px;
+    font-size: var(--span-size);
     text-align: center;
     line-height: 130%;
 }
 
-.nugget,
+.image,
 .imageButton,
-.contactButton {
+.imageButtonSmall,
+.contactButton,
+.contactButtonSmall {
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -18,38 +20,96 @@ span {
 
 .nugget,
 .imageButton,
-.navButton {
+.navButton,
+.navButtonSmall {
     padding: 10px 25px;
     border-radius: 50px;
     border: 1px solid #000;
 }
 
+.image,
 .nugget,
-.imageButton {
+.imageButton,
+.imageButtonSmall {
     background: var(--buttons-secondary);
 }
 
 .contactButton,
-.navButton {
+.contactButtonSmall,
+.navButton,
+.navButtonSmall {
     padding: 10px;
     background: unset;
     border: unset;
 }
 
-.nugget {
-    border: 1px dashed #000;
-    font-size: 15px;
+.contactButtonSmall {
+    font-size: var(--p1);
+    padding: 0px;
+    gap: 5px;
 }
 
-.imageButton {
-    display: flex;
+.navButton {
+    margin: 20px;
+}
+
+.navButtonSmall {
+    padding: 1px 5px;
+    line-height: 100%;
+    margin: 10px;
+}
+
+.navButtonSmall span,
+.contactButtonSmall span,
+.imageButtonSmall span {
+    font-size: var(--span-size-small);
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    line-height: 150%;
+}
+
+.nugget,
+.nuggetSmall {
+    border: 1px dashed #000;
+    font-size: var(--p1);
+}
+
+.nuggetSmall {
+    font-size: var(--p2);
+    padding: 5px 15px;
+    border-radius: 15px;
+}
+
+.image,
+.imageButton,
+.imageButtonSmall {
     padding: 10px 15px;
-    gap: 5px;
+    display: flex;
     border: unset;
 }
 
+.imageButton {
+    gap: 5px;
+}
+
+.imageButtonSmall {
+    border-radius: 25px;
+    gap: 2px;
+    padding: 5px 10px;
+    font-size: var(--p1);
+}
+
+.image {
+    flex-direction: column;
+    border-radius: 50%;
+}
+
 .imageButton:hover,
-.navButton:hover {
+.imageButtonSmall:hover,
+.image:hover,
+.navButton:hover,
+.navButtonSmall:hover {
     background: var(--buttons-primary);
     box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25);
 }

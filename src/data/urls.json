@@ -2,6 +2,6 @@
     "home": "/",
     "aboutMe": "/AboutMe",
     "projectList": "/ProjectList",
-    "contactInfo": "/ProjectList",
+    "contactInfo": "/ContactInfo",
     "geneticAlgorithm": "/Project/GeneticAlgorithm"
 }

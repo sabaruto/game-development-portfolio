@@ -1,14 +1,27 @@
-.base {
+.base,
+.baseSmall {
     display: flex;
-    padding: 5%;
     flex-direction: column;
+}
+
+.base {
+    width: 96%;
+    margin: 4% 0%;
+    padding-bottom: 4%;
     gap: 50px;
 }
 
-.base h2 {
+.baseSmall {
+    width: calc(100% - 50px);
+    margin: 25px 0;
+    gap: 25px;
+    padding-bottom: 25px;
+}
+
+h2 {
     padding-bottom: 2%;
 }
 
-.base p {
+p {
     padding-bottom: 0.5%;
 }

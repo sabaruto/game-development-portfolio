@@ -1,11 +1,18 @@
 import { useContext } from 'react';
-import { OrientationContext } from '../../../App';
+import { OrientationContext } from '../../../App/App';
 import styles from '../card.module.css';
 import Info from '../../../types/Info/Block/Block';
+import SetOrientationStyle from '../../../Common/Orientation/Orientation';
 
 function Passport(props: Info) {
+    const photoCardStyles = SetOrientationStyle(
+        styles.photoCard, 
+        styles.photoCardSmall, 
+        styles.photoCardExtraSmall,
+    )
+
     return (
-        <div className={useContext(OrientationContext) ? styles.photoCardSmall: styles.photoCard}>
+        <div className={photoCardStyles[useContext(OrientationContext)]}>
             <div className={styles.cardDetails}>
                 <div className={styles.cardInfo}>
                     <h2>{props.title}</h2>

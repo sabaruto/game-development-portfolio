@@ -2,12 +2,20 @@ import React, { useContext } from 'react';
 
 import ImageButton from '../Button/ImageButton';
 import styles from './navbar.module.css'
-import { OrientationContext } from '../../App';
+import { OrientationContext } from '../../App/App';
 import urls from '../../data/urls.json';
+import SetOrientationStyle from '../../Common/Orientation/Orientation';
 
 function Navbar(props: {title: string}) {
+
+    const navStyles = SetOrientationStyle(
+        styles.navbar,
+        styles.small,
+        styles.extraSmall,
+    )
+    
     return (
-        <div className={useContext(OrientationContext) ? styles.small : styles.navbar}>
+        <div className={navStyles[useContext(OrientationContext)]}>
             <h1>{props.title}</h1>
             <div className={styles.buttons}>
                 <ImageButton imageName="ai-home" text="Home" url={urls.home}/>

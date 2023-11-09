@@ -1,17 +1,38 @@
 import React, { createContext } from "react";
-import Navbar from "./Components/Navbar";
+import Navbar from "../Components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
+import ScreenType from "../enum/ScreenType";
+import SetOrientationStyle from "../Common/Orientation/Orientation";
+import styles from './app.module.css';
+
+const OrientationContext = createContext(ScreenType.HORIZONTAL_PC);
 
 function App() {
   const location = useLocation();
-  const [isVertical, setIsVertical] = React.useState(false);
+  const [screenType, setScreenType] = React.useState(ScreenType.HORIZONTAL_PC);
   const [title, setTitle] = React.useState("Theodore Aaron-Obelley");
+  const appStyles = SetOrientationStyle(
+    styles.App,
+    styles.App,
+    styles.AppSmall,
+  )
 
   function handleResize() {
     const isvertical = window.innerWidth < 1350;
+    const isMobile = window.innerWidth < 700;
 
-    if (isVertical !== isvertical) {
-      setIsVertical(isvertical);
+    var newScreenType: ScreenType
+
+    if (isMobile) {
+      newScreenType = ScreenType.MOBILE
+    } else if (isvertical) {
+      newScreenType = ScreenType.VERTICAL_PC
+    } else {
+      newScreenType = ScreenType.HORIZONTAL_PC
+    }
+
+    if (newScreenType !== screenType) {
+      setScreenType(newScreenType)
     }
   }
 
@@ -40,8 +61,8 @@ function App() {
   handleResize()
   
   return (
-    <OrientationContext.Provider value={isVertical}>
-      <div className="App">
+    <OrientationContext.Provider value={screenType}>
+      <div className={appStyles[screenType]}>
         <Navbar title={title}/>
         <Outlet />
       </div>
@@ -49,5 +70,5 @@ function App() {
   );
 }
 
-export const OrientationContext = createContext(false);
+export { OrientationContext };
 export default App;

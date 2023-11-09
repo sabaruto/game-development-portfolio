@@ -1,15 +1,22 @@
 import { useContext } from 'react';
-import { OrientationContext } from '../../../App';
+import { OrientationContext } from '../../../App/App';
 import HeroData from '../../../types/Game/Game';
 import Nugget from '../../Button/Nugget';
 import styles from '../card.module.css';
+import SetOrientationStyle from '../../../Common/Orientation/Orientation';
 
 function Hero(props: {heroData: HeroData}) {
 
+    const cardStyles = SetOrientationStyle(
+        styles.card,
+        styles.cardSmall,
+        styles.cardExtraSmall,
+    )
+
     return (
-        <div className={useContext(OrientationContext) ? styles.cardSmall : styles.card}>
+        <div className={cardStyles[useContext(OrientationContext)]}>
             <div className={styles.video}>
-                <video loop autoPlay muted src={process.env.PUBLIC_URL + "/videos/" + props.heroData.video} />
+                <video loop controls autoPlay muted src={process.env.PUBLIC_URL + "/videos/" + props.heroData.video} />
             </div>
             <div className={styles.cardDetails}>
                 <div className={styles.cardInfo}>

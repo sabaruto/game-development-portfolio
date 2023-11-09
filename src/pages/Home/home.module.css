@@ -1,12 +1,21 @@
-.home {
-    margin-top: 30px;
+.home,
+.homeSmall {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    gap: 50px;
-    flex: 1 0 0;
+    justify-content: flex-start;
+    flex: 1;
     align-self: stretch;
+}
+
+.home {
+    margin-top: 30px;
+    gap: 50px;
+}
+
+.homeSmall {
+    gap: 7px;
+    margin-bottom: 7px;
 }
 
 .home button {
@@ -21,4 +30,9 @@
     gap: 15px;
     flex: 1 0 0;
     align-self: stretch;
+}
+
+.homeSmall .content {
+    gap: 7px;
+    padding: 0px 7px;
 }
