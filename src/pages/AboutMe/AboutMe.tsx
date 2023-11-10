@@ -10,7 +10,7 @@ import Info from '../../types/Info/Block';
 const passportData: Info = {
     title: "About Me",
     description: [
-        "Hi, I’m Theodore Aaron-Obelley, a software engineer with a passion for Game Development. I’ve been making games from secondary school, sending Game Maker executables to the student body, and never stopped tinkering with the medium.",
+        "Hi, I’m Theodore Aaron-Obelley, a software engineer with a passion for Game Development. I’ve been making games since secondary school, sending Game Maker executables to the student body, and have never stopped tinkering with the medium.",
         "Below you can see a catalogue of my projects and some detailed information on their development. All of these are personal projects in varying stages of completion but all interesting explorations of games and their engines.",
         "If you have any questions or enquires please feel free to contact me."
     ],
