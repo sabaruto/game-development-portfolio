@@ -10,16 +10,18 @@ function Links(props: {sourceLink: string, buildLink: string}) {
         styles.linksCard,
         styles.linksCardSmall,
     )
-
     const currentLinksCardStyle = linksCardStyles[useContext(OrientationContext)]
+    var index = 0;
+    
     var linkElements: JSX.Element[] = []
 
     if (props.sourceLink !== "") { 
-        linkElements.push(<ExternalLink imageName='ai-github' url={props.sourceLink}>Source Code</ExternalLink>) 
+        linkElements.push(<ExternalLink imageName='ai-github' url={props.sourceLink} key={index}>Source Code</ExternalLink>) 
+        index += 1;
     }
 
     if (props.buildLink !== "") {
-        linkElements.push(<ExternalLink imageName='ai-joypad' url={props.buildLink}>Build</ExternalLink>)
+        linkElements.push(<ExternalLink imageName='ai-joypad' url={props.buildLink} key={index}>Build</ExternalLink>)
     }
 
     if (linkElements.length < 1) {

@@ -4,6 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import ScreenType from "../enum/ScreenType";
 import SetOrientationStyle from "../Common/Orientation/Orientation";
 import styles from './app.module.css';
+import jsAsCSS from "../Common/JsAsCSS";
 
 const OrientationContext = createContext(ScreenType.HORIZONTAL_PC);
 
@@ -11,13 +12,14 @@ function App() {
   const location = useLocation();
   const [screenType, setScreenType] = React.useState(ScreenType.HORIZONTAL_PC);
   const [title, setTitle] = React.useState("Theodore Aaron-Obelley");
-  const [appStyle, setAppStyle] = React.useState({ ["--margin-gap" as any]: "200px" });
   const ref = useRef<HTMLDivElement>(null);
   const appStyles = SetOrientationStyle(
     styles.App,
     styles.App,
     styles.AppSmall,
   );
+
+  jsAsCSS("--margin-gap", "200px");
 
   function setMargin() {
     if (ref == null || ref.current == null) {
@@ -26,7 +28,7 @@ function App() {
     }
     
     const navbarHeight = ref.current.clientHeight;
-    setAppStyle({ ["--margin-gap" as any]: navbarHeight + 20 + "px" });
+    jsAsCSS("--margin-gap", navbarHeight + 20 + "px");
     console.log("Updated margin value", navbarHeight)
   }
 
@@ -72,7 +74,7 @@ function App() {
   handleResize()
   return (
     <OrientationContext.Provider value={screenType}>
-      <div className={appStyles[screenType]} style={appStyle}>
+      <div className={appStyles[screenType]}>
         <Navbar title={title} ref={ref}/>
         <Outlet />
       </div>
