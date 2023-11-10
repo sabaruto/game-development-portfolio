@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import Game from '../../types/Game/Game';
 import GameData from '../../data/games.json';
 import NavButton from '../../Components/Button/NavButton';
-import styles from './projects.module.css'
+import styles from './projectsList.module.css';
 import urls from '../../data/urls.json';
 import RowCards from '../../Components/Card/RowCards';
 import ContactBar from '../../Components/ContactBar';
