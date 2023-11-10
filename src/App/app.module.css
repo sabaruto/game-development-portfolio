@@ -9,8 +9,8 @@
 }
 
 .AppSmall {
-  margin-top: 150px;
-  height: calc(100vh - 150px);
+  margin-top: var(--margin-gap);
+  height: calc(100vh - var(--margin-gap));
 }
 
 .AppSmall p {

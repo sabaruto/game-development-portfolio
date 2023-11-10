@@ -134,7 +134,7 @@ photoCardExtraSmall {
 
 .video {
     display: flex;
-    flex-grow: 3;
+    flex-grow: 1;
     align-self: stretch;
     border-radius: 10px;
     background: rgba(126, 131, 119, 0.20);
@@ -143,7 +143,6 @@ photoCardExtraSmall {
 video {
     width: 100%;
     overflow: hidden;
-    align-self: stretch;
 }
 
 .img {
