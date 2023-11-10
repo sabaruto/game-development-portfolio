@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useRef } from "react";
 import Navbar from "../Components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import ScreenType from "../enum/ScreenType";
@@ -11,11 +11,24 @@ function App() {
   const location = useLocation();
   const [screenType, setScreenType] = React.useState(ScreenType.HORIZONTAL_PC);
   const [title, setTitle] = React.useState("Theodore Aaron-Obelley");
+  const [appStyle, setAppStyle] = React.useState({ ["--margin-gap" as any]: "200px" });
+  const ref = useRef<HTMLDivElement>(null);
   const appStyles = SetOrientationStyle(
     styles.App,
     styles.App,
     styles.AppSmall,
-  )
+  );
+
+  function setMargin() {
+    if (ref == null || ref.current == null) {
+      console.log("No div given")
+      return
+    }
+    
+    const navbarHeight = ref.current.clientHeight;
+    setAppStyle({ ["--margin-gap" as any]: navbarHeight + 20 + "px" });
+    console.log("Updated margin value", navbarHeight)
+  }
 
   function handleResize() {
     const isvertical = window.innerWidth < 1350;
@@ -49,21 +62,18 @@ function App() {
   }
 
   React.useEffect(() => {
-
     handleResize()
     window.addEventListener('resize', handleResize)
   })
 
-  React.useEffect(() => {
-    getTitleName()
-  }, [location])
+  React.useEffect(() => { getTitleName() }, [location])
+  React.useEffect(() => {setMargin()})
 
   handleResize()
-  
   return (
     <OrientationContext.Provider value={screenType}>
-      <div className={appStyles[screenType]}>
-        <Navbar title={title}/>
+      <div className={appStyles[screenType]} style={appStyle}>
+        <Navbar title={title} ref={ref}/>
         <Outlet />
       </div>
     </OrientationContext.Provider>
