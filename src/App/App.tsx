@@ -51,16 +51,28 @@ function App() {
     }
   }
 
-  function getTitleName() {
+  function changeTitleName() {
     const pathName = window.location.pathname
     const urlNames = pathName.split("/")
+    var tabTitle = "Home"
+
+    console.log(urlNames)
 
     if (urlNames[1] === "Project" && urlNames.length > 2) {
       let newTitle = urlNames[2].replace(/([a-z]+)([A-Z]+)/g, "$1 $2").replace(/^/, "");
       setTitle(newTitle)
+      tabTitle = newTitle;
     } else {
       setTitle("Theodore Aaron-Obelley")
+
+      if (urlNames[1] === "") {
+        tabTitle = "Home";
+      } else {
+        tabTitle = urlNames[1].replace(/([a-z]+)([A-Z]+)/g, "$1 $2").replace(/^/, "");
+      }
     }
+
+    document.title = tabTitle
   }
 
   React.useEffect(() => {
@@ -68,7 +80,7 @@ function App() {
     window.addEventListener('resize', handleResize)
   })
 
-  React.useEffect(() => { getTitleName() }, [location])
+  React.useEffect(() => { changeTitleName() }, [location])
   React.useEffect(() => {setMargin()})
 
   handleResize()

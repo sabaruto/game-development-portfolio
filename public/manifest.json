@@ -1,4 +1,40 @@
 {
     "name": "Game Development Portfolio",
-    "short_name": "Portfolio"
+    "short_name": "Portfolio",
+    "start_url": "index.html",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "icons/icon256x256.ico",
+            "sizes": "256x256"
+        },
+        {
+            "src": "icons/icon128x128.ico",
+            "sizes": "128x128"
+        },
+        {
+            "src": "icons/icon96x96.ico",
+            "sizes": "96x96"
+        },
+        {
+            "src": "icons/icon64x64.ico",
+            "sizes": "64x64"
+        },
+        {
+            "src": "icons/icon48x48.ico",
+            "sizes": "48x48"
+        },
+        {
+            "src": "icons/icon32x32.ico",
+            "sizes": "32x32"
+        },
+        {
+            "src": "icons/icon24x24.ico",
+            "sizes": "24x24"
+        },
+        {
+            "src": "icons/icon16x16.ico",
+            "sizes": "16x16"
+        }
+    ]
 }
