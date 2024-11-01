@@ -1,98 +1,86 @@
-import React, { createContext, useRef } from "react";
+import { createContext, Suspense, useEffect, useRef, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import ScreenType from "../enum/ScreenType";
 import SetOrientationStyle from "../Common/Orientation/Orientation";
-import styles from './app.module.css';
-import jsAsCSS from "../Common/JsAsCSS";
+import styles from "./app.module.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const OrientationContext = createContext(ScreenType.HORIZONTAL_PC);
+const DBContext = createContext(false);
+const queryClient = new QueryClient();
 
 function App() {
-  const location = useLocation();
-  const [screenType, setScreenType] = React.useState(ScreenType.HORIZONTAL_PC);
-  const [title, setTitle] = React.useState("Theodore Aaron-Obelley");
-  const ref = useRef<HTMLDivElement>(null);
-  const appStyles = SetOrientationStyle(
-    styles.App,
-    styles.App,
-    styles.AppSmall,
-  );
+    const location = useLocation();
+    const [screenType, setScreenType] = useState(ScreenType.HORIZONTAL_PC);
+    const [title, setTitle] = useState("Theodore Aaron-Obelley");
+    const ref = useRef<HTMLDivElement>(null);
+    const appStyles = SetOrientationStyle(styles.App, styles.App, styles.AppSmall);
 
-  jsAsCSS("--margin-gap", "200px");
+    function handleResize() {
+        const isvertical = window.innerWidth < 1350;
+        const isMobile = window.innerWidth < 700;
 
-  function setMargin() {
-    if (ref == null || ref.current == null) {
-      console.log("No div given")
-      return
-    }
-    
-    const navbarHeight = ref.current.clientHeight;
-    jsAsCSS("--margin-gap", navbarHeight + 20 + "px");
-    console.log("Updated margin value", navbarHeight)
-  }
+        var newScreenType: ScreenType;
 
-  function handleResize() {
-    const isvertical = window.innerWidth < 1350;
-    const isMobile = window.innerWidth < 700;
+        if (isMobile) {
+            newScreenType = ScreenType.MOBILE;
+        } else if (isvertical) {
+            newScreenType = ScreenType.VERTICAL_PC;
+        } else {
+            newScreenType = ScreenType.HORIZONTAL_PC;
+        }
 
-    var newScreenType: ScreenType
-
-    if (isMobile) {
-      newScreenType = ScreenType.MOBILE
-    } else if (isvertical) {
-      newScreenType = ScreenType.VERTICAL_PC
-    } else {
-      newScreenType = ScreenType.HORIZONTAL_PC
+        if (newScreenType !== screenType) {
+            setScreenType(newScreenType);
+        }
     }
 
-    if (newScreenType !== screenType) {
-      setScreenType(newScreenType)
-    }
-  }
+    function changeTitleName() {
+        const pathName = window.location.pathname;
+        const urlNames = pathName.split("/");
+        var tabTitle = "Home";
 
-  function changeTitleName() {
-    const pathName = window.location.pathname
-    const urlNames = pathName.split("/")
-    var tabTitle = "Home"
+        if (urlNames[1] === "Project" && urlNames.length > 2) {
+            let newTitle = urlNames[2].replace(/([a-z]+)([A-Z]+)/g, "$1 $2").replace(/^/, "");
+            setTitle(newTitle);
+            tabTitle = newTitle;
+        } else {
+            setTitle("Theodore Aaron-Obelley");
 
-    console.log(urlNames)
+            if (urlNames[1] === "") {
+                tabTitle = "Home";
+            } else {
+                tabTitle = urlNames[1].replace(/([a-z]+)([A-Z]+)/g, "$1 $2").replace(/^/, "");
+            }
+        }
 
-    if (urlNames[1] === "Project" && urlNames.length > 2) {
-      let newTitle = urlNames[2].replace(/([a-z]+)([A-Z]+)/g, "$1 $2").replace(/^/, "");
-      setTitle(newTitle)
-      tabTitle = newTitle;
-    } else {
-      setTitle("Theodore Aaron-Obelley")
-
-      if (urlNames[1] === "") {
-        tabTitle = "Home";
-      } else {
-        tabTitle = urlNames[1].replace(/([a-z]+)([A-Z]+)/g, "$1 $2").replace(/^/, "");
-      }
+        document.title = tabTitle;
     }
 
-    document.title = tabTitle
-  }
+    useEffect(() => {
+        handleResize();
+        window.addEventListener("resize", handleResize);
+    });
 
-  React.useEffect(() => {
-    handleResize()
-    window.addEventListener('resize', handleResize)
-  })
+    useEffect(() => {
+        changeTitleName();
+    }, [location]);
 
-  React.useEffect(() => { changeTitleName() }, [location])
-  React.useEffect(() => {setMargin()})
-
-  handleResize()
-  return (
-    <OrientationContext.Provider value={screenType}>
-      <div className={appStyles[screenType]}>
-        <Navbar title={title} ref={ref}/>
-        <Outlet />
-      </div>
-    </OrientationContext.Provider>
-  );
+    handleResize();
+    return (
+        <OrientationContext.Provider value={screenType}>
+            <QueryClientProvider client={queryClient}>
+                <div className={appStyles[screenType]}>
+                    <Navbar title={title} ref={ref} />
+                    <Suspense fallback={<p>Loading</p>}>
+                        <Outlet />
+                    </Suspense>
+                </div>
+            </QueryClientProvider>
+        </OrientationContext.Provider>
+    );
 }
 
-export { OrientationContext };
+export { OrientationContext, DBContext };
 export default App;

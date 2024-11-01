@@ -1,26 +1,25 @@
 .App,
 .AppSmall {
-  display: flex;
-  width: 100vw;
-  height: 100vh;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .AppSmall {
-  margin-top: var(--margin-gap);
-  height: calc(100vh - var(--margin-gap));
+    height: calc(100vh - var(--margin-gap));
 }
 
 .AppSmall p {
-  font-size: var(--p1);
+    font-size: var(--p1);
 }
 
 .AppSmall h1 {
-  font-size: var(--h2);
+    font-size: var(--h2);
 }
 
 .AppSmall h2 {
-  font-size: var(--h3);
+    font-size: var(--h3);
 }

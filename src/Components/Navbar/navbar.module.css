@@ -1,66 +1,64 @@
 .navbar,
 .small,
 .extraSmall {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .small,
 .extraSmall {
-  flex-direction: column;
-  padding: 10px 0%;
-  width: 100%;
+    flex-direction: column;
+    padding: 10px 0%;
+    width: 100%;
 }
 
 .small {
-  height: 140px;
+    height: 140px;
 }
 
 .extraSmall {
-  position: fixed;
-  top: 0;
-  background-color: white;
-  z-index: 1000;
+    background-color: white;
+    z-index: 1000;
 }
 
 .navbar {
-  height: 80px;
-  width: 100%;
+    height: 80px;
+    width: 100%;
 }
 
 h1 {
-  font-style: italic;
+    font-style: italic;
 }
 
 .navbar h1 {
-  margin-left: 2%;
+    margin-left: 2%;
 }
 
 .small h1,
 .extraSmall h1 {
-  margin-top: 0%;
-  margin-bottom: 2%;
+    margin-top: 0%;
+    margin-bottom: 2%;
 }
 
 .extraSmall h1 {
-  text-align: center;
-  font-size: var(--h3);
+    text-align: center;
+    font-size: var(--h3);
 }
 
 .buttons {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
 }
 
 .navbar .buttons {
-  margin-right: 2%;
+    margin-right: 2%;
 }
 
 .extraSmall .buttons {
-  justify-content: space-evenly;
-  width: 100%;
+    justify-content: space-evenly;
+    width: 100%;
 }

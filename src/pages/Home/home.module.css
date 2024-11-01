@@ -6,10 +6,10 @@
     justify-content: flex-start;
     flex: 1;
     align-self: stretch;
+    margin-top: 30px;
 }
 
 .home {
-    margin-top: 30px;
     gap: 50px;
 }
 
