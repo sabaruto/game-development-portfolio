@@ -1,70 +1,69 @@
 :root {
-  --accent: #7E8377;
-  --accent-faded: #D9D9D9;
-  --buttons-primary: #A7EF34;
-  --buttons-secondary: #DEF9B4;
-  --text: #090E01;
+    --accent: #7e8377;
+    --accent-faded: #d9d9d9;
+    --buttons-primary: #a7ef34;
+    --buttons-secondary: #def9b4;
+    --text: #090e01;
 
-  
-  --text-ratio: 1.33;
-  --body: 20px;
+    --text-ratio: 1.33;
+    --body: 20px;
 
-  --span-size: 30px;
-  --span-size-small: 15px;
+    --span-size: 30px;
+    --span-size-small: 15px;
 
-  --h3: calc(var(--body) * var(--text-ratio));
-  --h2: calc(var(--h3) * var(--text-ratio));
-  --h1: calc(var(--h2) * var(--text-ratio));
-  
-  --p1: calc(var(--body) / var(--text-ratio));
-  --p2: calc(var(--p1) / var(--text-ratio));
-  --p3: calc(var(--p2) / var(--text-ratio));
+    --h3: calc(var(--body) * var(--text-ratio));
+    --h2: calc(var(--h3) * var(--text-ratio));
+    --h1: calc(var(--h2) * var(--text-ratio));
+
+    --p1: calc(var(--body) / var(--text-ratio));
+    --p2: calc(var(--p1) / var(--text-ratio));
+    --p3: calc(var(--p2) / var(--text-ratio));
 }
 
 body {
-  font-family: 'Roboto Slab';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: var(--body);
-  border: unset;
-  margin: unset;
+    font-family: "Roboto Slab";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: var(--body);
+    border: unset;
+    margin: unset;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
   display: none;
-}
+} */
 
 h1,
 h2 {
-  font-family: 'Roboto Serif';
-  line-height: normal;
-  font-size: normal;
+    font-family: "Roboto Serif";
+    line-height: normal;
+    font-size: normal;
 }
 
 h1 {
-  font-size: var(--h1);
-  font-weight: 700;
+    font-size: var(--h1);
+    font-weight: 700;
 }
 
 h2 {
-  font-size: var(--h2);
-  font-weight: 600;
+    font-size: var(--h2);
+    font-weight: 600;
 }
 
 h3 {
-  font-size: var(--h3);
-  font-size: 500;
+    font-size: var(--h3);
+    font-size: 500;
 }
 
 button {
-  font-family: inherit;
-  font-size: inherit;
-  font-style: inherit;
-  font-weight: inherit;
-  line-height: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    line-height: inherit;
 }
 
 root {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }

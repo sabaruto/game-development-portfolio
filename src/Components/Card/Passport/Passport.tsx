@@ -1,15 +1,12 @@
-import { useContext } from 'react';
-import { OrientationContext } from '../../../App/App';
-import styles from '../card.module.css';
-import Info from '../../../types/Info/Block/Block';
-import SetOrientationStyle from '../../../Common/Orientation/Orientation';
+import { useContext } from "react";
+import { OrientationContext } from "../../../App/App";
+import styles from "../card.module.css";
+import Info from "../../../types/Info/Block/Block";
+import SetOrientationStyle from "../../../Common/Orientation/Orientation";
 
 function Passport(props: Info) {
-    const photoCardStyles = SetOrientationStyle(
-        styles.photoCard, 
-        styles.photoCardSmall, 
-        styles.photoCardExtraSmall,
-    )
+    const imagePath = require("../../../Assets/Images/" + props.image);
+    const photoCardStyles = SetOrientationStyle(styles.photoCard, styles.photoCardSmall, styles.photoCardExtraSmall);
 
     return (
         <div className={photoCardStyles[useContext(OrientationContext)]}>
@@ -22,10 +19,10 @@ function Passport(props: Info) {
                 </div>
             </div>
             <div className={styles.photo}>
-                <img src={process.env.PUBLIC_URL + "/images/" + props.image} alt="Self"/>
+                <img src={imagePath} alt="Self" />
             </div>
         </div>
-    )
+    );
 }
 
 export default Passport;

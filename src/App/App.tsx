@@ -5,6 +5,8 @@ import ScreenType from "../enum/ScreenType";
 import SetOrientationStyle from "../Common/Orientation/Orientation";
 import styles from "./app.module.css";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ErrorBoundary } from "react-error-boundary";
+import FallbackRender from "../Components/ErrorFallbackRender";
 
 const OrientationContext = createContext(ScreenType.HORIZONTAL_PC);
 const DBContext = createContext(false);
@@ -70,14 +72,16 @@ function App() {
     handleResize();
     return (
         <OrientationContext.Provider value={screenType}>
-            <QueryClientProvider client={queryClient}>
-                <div className={appStyles[screenType]}>
-                    <Navbar title={title} ref={ref} />
-                    <Suspense fallback={<p>Loading</p>}>
-                        <Outlet />
-                    </Suspense>
-                </div>
-            </QueryClientProvider>
+            <ErrorBoundary fallbackRender={FallbackRender}>
+                <QueryClientProvider client={queryClient}>
+                    <div className={appStyles[screenType]}>
+                        <Navbar title={title} ref={ref} />
+                        <Suspense fallback={<p>Loading</p>}>
+                            <Outlet />
+                        </Suspense>
+                    </div>
+                </QueryClientProvider>
+            </ErrorBoundary>
         </OrientationContext.Provider>
     );
 }

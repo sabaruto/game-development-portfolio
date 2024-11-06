@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import NavButton from "../../Components/Button/NavButton";
 import Hero from "../../Components/Card/Hero";
 import Game from "../../types/Game/Game";
@@ -7,8 +7,6 @@ import styles from "./home.module.css";
 import { useNavigate } from "react-router-dom";
 import SetOrientationStyle from "../../Common/Orientation/Orientation";
 import { OrientationContext } from "../../App/App";
-import { ErrorHandler } from "../../Components/ErrorHandler";
-
 const games: Game[] = GameData;
 
 function modularAdd(value: number, diff: number): number {
@@ -26,20 +24,8 @@ function modularAdd(value: number, diff: number): number {
 function Home() {
     const [gameIndex, setGameIndex] = useState(0);
     const homeStyles = SetOrientationStyle(styles.home, styles.home, styles.homeSmall);
-    const err = useRef<Error | undefined>(undefined);
-
     const navigate = useNavigate();
     const style = homeStyles[useContext(OrientationContext)];
-
-    useEffect(() => {
-        //Implementing the setInterval method
-        const interval = setInterval(() => {
-            setGameIndex(modularAdd(gameIndex, 1));
-        }, 60 * 1000);
-
-        //Clearing the interval
-        return () => clearInterval(interval);
-    }, [gameIndex]);
 
     function updateGameIndex(isRight: boolean, event: any) {
         event.preventDefault();
@@ -63,17 +49,23 @@ function Home() {
         navigate("/AboutMe");
     }
 
+    useEffect(() => {
+        //Implementing the setInterval method
+        const interval = setInterval(() => {
+            setGameIndex(modularAdd(gameIndex, 1));
+        }, 60 * 1000);
+
+        //Clearing the interval
+        return () => clearInterval(interval);
+    }, [gameIndex]);
+
     return (
         <div className={style}>
-            <ErrorHandler fallback={<p>There was an errror</p>} error={err.current}>
-                <div className={styles.content}>
-                    <NavButton imageName="ai-arrow-left" onClick={handleNewGameClick(false)} />
-                    <Suspense fallback={<p>Loading</p>}>
-                        <Hero heroData={games[gameIndex]} />
-                    </Suspense>
-                    <NavButton imageName="ai-arrow-right" onClick={handleNewGameClick(true)} />
-                </div>
-            </ErrorHandler>
+            <div className={styles.content}>
+                <NavButton imageName="ai-arrow-left" onClick={handleNewGameClick(false)} />
+                <Hero heroData={games[gameIndex]} />
+                <NavButton imageName="ai-arrow-right" onClick={handleNewGameClick(true)} />
+            </div>
             <NavButton imageName="ai-arrow-down" onClick={handleNextPageClick} />
         </div>
     );
